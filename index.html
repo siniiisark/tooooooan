@@ -1,0 +1,266 @@
+ <!DOCTYPE html>
+    <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banani's World✨</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f0e6;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            fill: rgba(0, 0, 0, 0.15);
+            width: 40px;
+            height: 40px;
+            animation: float-heart 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float-heart {
+            0% {
+                transform: translateY(110vh) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: translateY(50vh) translateX(calc(var(--drift) * 100px)) rotate(180deg) scale(1.2);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(calc(var(--drift) * 200px)) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #d4c1ad, #e6d5c5);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s;
+        }
+
+        .splash-text {
+            font-family: 'Rajdhani', sans-serif;
+            color: #4a4a4a;
+            font-size: 4rem;
+            text-align: center;
+            z-index: 1001;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            display: none;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .tap-instruction {
+            font-family: 'Rajdhani', sans-serif;
+            color: #4a4a4a;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .central-image-container {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .central-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .central-image-container:hover .central-image {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0,0,0,0.15), 0 0 60px rgba(0,0,0,0.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(245, 240, 230, 0.9);
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+        }
+
+        .central-image-container:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: #4a4a4a;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+            max-height: 100%;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .overlay-text::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .overlay-text::-webkit-scrollbar-thumb {
+            background-color: rgba(74, 74, 74, 0.3);
+            border-radius: 2px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .nav-button {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #c2b19b, #d4c1ad);
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 30px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #b3a28c, #c2b19b);
+        }
+
+        .nav-button i {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-hearts"></div>
+
+    <div class="splash-screen">
+        <h1 class="splash-text">BANANI DEY'S<br> CREATIVE UNIVERSE</h1>
+    </div>
+
+    <div class="main-content">
+        <div class="tap-instruction">Tap on the image!</div>
+        <div class="central-image-container">
+            <img src="ban1.jpg" alt="" class="central-image">
+            <div class="image-overlay">
+                <p class="overlay-text">
+                    "Like whispers of light captured in fleeting moments, this website unfolds as a gallery of the soul's expression. It is a sanctuary where the delicate art of sketching meets the silent poetry of photography, each frame a testament to the harmony of vision and emotion. Here, aestheticism is not merely seen, but felt—a space where every stroke, every shadow, and every captured instant weaves a narrative of serene contemplation and timeless beauty✨"
+                </p>
+            </div>
+        </div>
+        
+        <div class="nav-buttons">
+            <a href="photography.html" class="nav-button">
+                <i class=""></i> PHOTOGRAPHY
+            </a>
+            <a href="art.html" class="nav-button">
+                <i class=""></i> ART
+            </a>
+            <a href="about.html" class="nav-button">
+                <i class=""></i> ABOUT
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            heart.setAttribute("viewBox", "0 0 24 24");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.setProperty('--drift', (Math.random() * 2 - 1).toString());
+            heart.style.animationDuration = (8 + Math.random() * 4) + "s";
+            
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
+            
+            heart.appendChild(path);
+            document.querySelector('.background-hearts').appendChild(heart);
+            
+            heart.addEventListener("animationend", () => heart.remove());
+        }
+        setInterval(createHeart, 1000);
+
+        setTimeout(() => {
+            const splashScreen = document.querySelector(".splash-screen");
+            const mainContent = document.querySelector(".main-content");
+            
+            splashScreen.style.opacity = "0";
+            
+            setTimeout(() => {
+                splashScreen.style.display = "none";
+                mainContent.style.display = "block";
+            }, 500);
+        }, 3000);
+    </script>
+</body>
+</html>
