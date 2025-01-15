@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banani's Art Gallery🎨</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: beige;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .featured-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.9),
+                        0 0 50px rgba(255, 223, 186, 0.8),
+                        0 0 70px rgba(255, 218, 185, 0.7);
+            animation: glow 2s infinite alternate;
+        }
+
+        .title {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.9),
+                           0 0 50px rgba(255, 223, 186, 0.8),
+                           0 0 70px rgba(255, 218, 185, 0.7);
+            }
+            to {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 1),
+                           0 0 60px rgba(255, 223, 186, 0.9),
+                           0 0 80px rgba(255, 218, 185, 0.8);
+            }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="mainnnn2.jpg" class="featured-image">
+        <h1 class="title">Banani' Art Gallery🎨</h1>
+    </div>
+    
+    <div class="gallery">
+        <img src="drawing1.jpg"  class="gallery-item">
+        <img src="drawing2.jpg"  class="gallery-item">
+        <img src="drawing3.jpg"  class="gallery-item">
+        <img src="art4.jpg"  class="gallery-item">
+        <img src="art5.jpg"  class="gallery-item">
+        <img src="art6.jpg"  class="gallery-item">
+        <img src="art7.jpg"  class="gallery-item">
+        <img src="art8.jpg"  class="gallery-item">
+        <img src="art9.jpg"  class="gallery-item">
+        <img src="art10.jpg"  class="gallery-item">
+        <img src="art11.jpg"  class="gallery-item">
+        <img src="art12.jpg"  class="gallery-item">
+        <img src="art13.jpg"  class="gallery-item">
+        <img src="art14.jpg"  class="gallery-item">
+        <img src="art15.jpg"  class="gallery-item">
+        <img src="art16.jpg"  class="gallery-item">
+        <img src="art17.jpg"  class="gallery-item">
+        <img src="art18.jpg"  class="gallery-item">
+        <img src="art19.jpg"  class="gallery-item">
+        <img src="art20.jpg"  class="gallery-item">
+        <img src="art21.jpg"  class="gallery-item">
+        <img src="art22.jpg"  class="gallery-item">
+        <img src="art23.jpg"  class="gallery-item">
+        <img src="art24.jpg"  class="gallery-item">
+        <img src="photo18.jpg"  class="gallery-item">
+        <img src="photo19.jpg"  class="gallery-item">
+        
+    </div>
+</body>
+</html>
